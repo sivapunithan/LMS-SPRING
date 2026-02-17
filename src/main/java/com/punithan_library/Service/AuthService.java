@@ -6,9 +6,9 @@ import com.punithan_library.Payload.Response.AuthResponse;
 
 public interface AuthService {
 
-    AuthResponse login(String username, String password);
+    AuthResponse login(String username, String password) throws UserException;
     AuthResponse signUp(UserDTO req) throws UserException;
 
-    void createPasswordResetToken(String email);
-    void resetPassword(String token, String newPassword);
+    void createPasswordResetToken(String email) throws UserException;
+    void resetPassword(String token, String newPassword) throws Exception;
 }

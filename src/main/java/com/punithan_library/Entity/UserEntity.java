@@ -2,10 +2,7 @@ package com.punithan_library.Entity;
 
 import com.punithan_library.Domain.AuthProvider;
 import com.punithan_library.Domain.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -15,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor @Builder
 public class UserEntity {
 
     @Id
@@ -26,6 +23,8 @@ public class UserEntity {
 
     private String fullName;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private UserRole role;
 
     private String password;

@@ -2,6 +2,7 @@ package com.punithan_library.Service.Impl;
 
 import com.punithan_library.Entity.UserEntity;
 import com.punithan_library.Repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Service
+@RequiredArgsConstructor
 public class CustomUserServiceImplementation implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;

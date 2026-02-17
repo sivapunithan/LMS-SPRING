@@ -1,6 +1,7 @@
 package com.punithan_library.Payload.DTO;
 
 import com.punithan_library.Domain.UserRole;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor @AllArgsConstructor
 public class UserDTO {
     private Long id;
+
+    @NotNull(message = "Email is required")
     private String email;
+
+    @NotNull(message = "Password is required")
     private String password;
     private String phone;
+
+    @NotNull(message = "FullName is required")
     private String fullName;
     private UserRole role;
     private String username;
