@@ -49,7 +49,7 @@ public class AuthServiceImpl implements AuthService {
 
 
     @Override
-    public AuthResponse login(String username, String password) throws UserException {
+    public AuthResponse login(String username, String password) throws UserException {   // UserName is email here
         try {
             Authentication authentication = authenticate(username, password);
             SecurityContextHolder.getContext().setAuthentication(authentication);
