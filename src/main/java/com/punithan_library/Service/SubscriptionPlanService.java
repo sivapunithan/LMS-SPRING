@@ -14,4 +14,6 @@ public interface SubscriptionPlanService {
     void deleteSubscriptionPlan(Long planId) throws Exception;
 
     List<SubscriptionPlanDTO> getSubscriptionPlans(Long planId);
+
+    SubscriptionPlanEntity getSubscriptionPlanByCode(String planCode);
 }

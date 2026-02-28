@@ -38,7 +38,7 @@ public class SubscriptionEntity {
 
     private String planName;
     private String planCode;
-    private BigDecimal price;
+    private Long price;
     @Column(nullable = false)
     private Integer maxBooksAllowed;
     @Column(nullable = false)
@@ -85,7 +85,7 @@ public class SubscriptionEntity {
     }
 
     public void initializedFromPlan(){
-        if (plan == null){
+        if (plan != null){
             this.planName = plan.getName();
             this.planCode = plan.getPlanCode();
             this.price = plan.getPrice();

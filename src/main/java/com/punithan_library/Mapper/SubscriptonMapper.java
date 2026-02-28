@@ -25,7 +25,9 @@ public class SubscriptonMapper {
 
     public SubscriptionDTO toDTO(SubscriptionEntity entity){
         if (entity == null) return null;
+        
         SubscriptionDTO dto = new SubscriptionDTO();
+        dto.setId(entity.getId());
         if (entity.getUser() != null){
             dto.setUserId(entity.getUser().getId());
             dto.setUserName(entity.getUser().getFullName());
@@ -57,37 +59,16 @@ public class SubscriptonMapper {
         return dto;
     }
 
-    public SubscriptionEntity toEntity(SubscriptionDTO dto){
+    public SubscriptionEntity toEntity(SubscriptionDTO dto, SubscriptionPlanEntity plan, UserEntity user){
         if (dto == null) return null;
         SubscriptionEntity entity = new SubscriptionEntity();
         entity.setId(dto.getId());
-
-        if (dto.getUserId() != null){
-            UserEntity user = userRepository.findById(dto.getUserId())
-                            .orElseThrow(()-> new SubscriptionException("User not found with ID: " + dto.getUserId()));
-            entity.setUser(user);
-        }
-        if (dto.getPlanId() != null){
-            SubscriptionPlanEntity plan = subscriptionPlanRepo.findById(dto.getPlanId())
-                            .orElseThrow(()-> new SubscriptionException("Plan not found with ID: " + dto.getPlanId()));
-            entity.setPlan(plan);
-        }
-        entity.setPlanName(dto.getPlanName());
-        entity.setPlanCode(dto.getPlanCode());
-        entity.setPrice(dto.getPrice());
-        
-        entity.setMaxBooksAllowed(dto.getMaxBooksAllowed());
-        entity.setMaxDaysPerBook(dto.getMaxDaysPerBook());
-        entity.setStartDate(dto.getStartDate());
-        entity.setEndDate(dto.getEndDate());
-        entity.setIsActive(dto.getIsActive());
-        entity.setAutoRenew(dto.getAutoRenew());
-        entity.setCancelledAt(dto.getCancelledAt());
-        entity.setCancelReason(dto.getCancelReason());
+        entity.setUser(user);
+        entity.setPlan(plan);
         entity.setNotes(dto.getNotes());
-        entity.setCreatedAt(dto.getCreatedAt());
-        entity.setUpdatedAt(dto.getUpdatedAt());
+
         return entity;
+        
     }
 
     public List<SubscriptionDTO> toDTOList(List<SubscriptionEntity> entities){

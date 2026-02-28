@@ -10,4 +10,6 @@ public interface UserService {
     public UserEntity getCurrentUser();
 
     public List<UserDTO> getAllUsers();
+
+    UserEntity findById(Long id);
 }

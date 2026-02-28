@@ -66,4 +66,14 @@ public class SubscriptionPlanServiceImpl implements SubscriptionPlanService {
         List<SubscriptionPlanEntity> planList = planRepository.findAll();
         return planList.stream().map(planMapper :: toDto).collect(Collectors.toList());
     }
+
+    @Override
+    public SubscriptionPlanEntity getSubscriptionPlanByCode(String planCode) {
+       
+        SubscriptionPlanEntity plan = planRepository.findByPlanCode(planCode);
+        if (plan == null){
+            throw new RuntimeException("Plan not found");
+        }
+        return plan;
+    }
 }

@@ -25,7 +25,7 @@ public class SubscriptionDTO {
     private Long planId;
     private String planName;
     private String planCode;
-    private BigDecimal price;
+    private Long price;
     private String currency;
     
     private Integer maxBooksAllowed;

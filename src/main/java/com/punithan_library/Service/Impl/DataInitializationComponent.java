@@ -28,12 +28,12 @@ public class DataInitializationComponent implements CommandLineRunner {
                     .fullName("Admin Punithan")
                     .role(UserRole.ROLE_ADMIN)
                     .build();
-            UserEntity admin = userRepository.save(user);
+            userRepository.save(user);
         }
     }
 
     @Override
     public void run(String... args) throws Exception {
-        initializationAdminUser();                 // Whenevr the system re-run this will execute
+        initializationAdminUser();                 // Whenever the system re-run this will execute
     }
 }

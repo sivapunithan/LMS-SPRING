@@ -38,4 +38,11 @@ public class UserServiceImpl implements UserService {
                 UserMapper::toDTO
         ).collect(Collectors.toList());
     }
+
+    @Override
+    public UserEntity findById(Long id) {
+        return userRepository.findById(id).orElseThrow(
+                ()-> new UsernameNotFoundException("User not found")
+        );
+    }
 }

@@ -32,7 +32,7 @@ public class SubscriptionPlanEntity {
     private Integer durationDays;
 
     @Column(nullable = false)
-    private BigDecimal price;
+    private Long price;
 
     private String currency = "INR";
 

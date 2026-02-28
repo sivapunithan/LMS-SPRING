@@ -35,6 +35,7 @@ public class AuthController {
         return ResponseEntity.ok(response);
     }
 
+    // Need to verify
     @PostMapping("/forgot-password")
     public ResponseEntity<ApiResponse> forgotPasswordHandler(@RequestBody @Valid ForgotPasswordRequest request) throws UserException {
         authService.createPasswordResetToken(request.getEmail());
